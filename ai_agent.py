@@ -11,7 +11,7 @@ from tools import get_cricket_score
 gemini_key = os.getenv('gemini_key')
 llm_gemini = init_chat_model(
     "google_genai:gemini-3.1-flash-lite",
-    api_key='AQ.Ab8RN6LbnhdgsWQVKRjebcj2ygQ6nd9ifQD6dxRnkuaGmO7WYQ'  
+    api_key=gemini_key
 )
 
 
