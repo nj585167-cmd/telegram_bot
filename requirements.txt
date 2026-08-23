@@ -1,0 +1,8 @@
+langchain
+langchain-google-genai
+langchain-community
+langgraph
+supabase
+python-telegram-bot
+python-telegram-bot[webhooks]
+python-dotenv
