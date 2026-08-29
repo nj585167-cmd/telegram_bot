@@ -5,7 +5,7 @@ from langchain.chat_models import init_chat_model
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
 
-from tools import get_cricket_score
+from tools import *
 
 
 # Load environment variables
@@ -27,9 +27,13 @@ llm_gemini = init_chat_model(
 # Create agent
 agent = create_agent(
     model=llm_gemini,
-    tools=[get_cricket_score],
+    tools=[get_cricket_score,get_football_score],
     checkpointer=InMemorySaver(),
-    system_prompt="You are a helpful assistant"
+    system_prompt="""
+    YOu are a helpful assistant. who uses relevant tools based on user info
+    When user asks about cricket score -> use get_crciket _score
+    When user asks about football score -> use get_football_score
+"""
 )
 
 
