@@ -27,7 +27,7 @@ llm_gemini = init_chat_model(
 # Create agent
 agent = create_agent(
     model=llm_gemini,
-    tools=[get_cricket_score,get_football_score],
+    tools=[get_cricket_score,get_football_score,get_live_value],
     checkpointer=InMemorySaver(),
     system_prompt="""
     YOu are a helpful assistant. who uses relevant tools based on user info
