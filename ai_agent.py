@@ -23,16 +23,37 @@ llm_gemini = init_chat_model(
     api_key=GEMINI_API_KEY
 )
 
-
-# Create agent
-agent = create_agent(
+info_agent = create_agent(
     model=llm_gemini,
     tools=[get_cricket_score,get_football_score,get_live_value],
     checkpointer=InMemorySaver(),
     system_prompt="""
     YOu are a helpful assistant. who uses relevant tools based on user info
     When user asks about cricket score -> use get_crciket _score
+    When user asks about get_live_value -> use get_live_value
     When user asks about football score -> use get_football_score
+"""
+)
+term_plan_agent = create_agent(
+    model=llm_gemini,
+    tools=[term_plan_eligibility],
+    checkpointer=InMemorySaver(),
+    system_prompt="""
+    YOu are a helpful assistant. who uses relevant tools based on user info
+    When user asks about term plan eligibility -> use term_plan_eligibility
+"""
+)
+
+# Create agent
+agent = create_agent(
+    model=llm_gemini,
+    tools=[as_info_agent,as_term_plan_agent],
+    checkpointer=InMemorySaver(),
+    system_prompt="""
+    YOu are a helpful assistant. who uses relevant tools based on user info
+    When user asks about cricket score -> use get_crciket _score
+    When user asks about football score -> use get_football_score
+    when user asks about term plan hlv value ->  use term_plan_eligibilty
 """
 )
 
