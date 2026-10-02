@@ -6,3 +6,5 @@ supabase
 python-telegram-bot
 python-telegram-bot[webhooks]
 python-dotenv
+yfinance
+langchain-core
